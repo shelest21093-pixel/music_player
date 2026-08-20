@@ -1,2 +1,3 @@
-#music player app
-ts, react
+# Music player app
+
+React + TypeScript + Vite.
