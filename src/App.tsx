@@ -2,30 +2,6 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import  { API_KEY } from '../api-key.js';
 
-// const tracks = [
-//   {
-//     id: 1,
-//     title: "music track 1",
-//     url: "https://musicfun.it-incubator.app/api/samurai-way-soundtrack.mp3",
-//   },
-//   {
-//     id: 2,
-//     title: "instrumental",
-//     url: "https://musicfun.it-incubator.app/api/samurai-way-soundtrack-instrumental.mp3",
-//   },
-//   {
-//     id: 3,
-//     title: "music track 2",
-//     url: "https://musicfun.it-incubator.app/api/samurai-way-soundtrack.mp3",
-//     isSelected: true,
-//   },
-//   {
-//     id: 4,
-//     title: "instrumental 2",
-//     url: "https://musicfun.it-incubator.app/api/samurai-way-soundtrack-instrumental.mp3",
-//   },
-// ];
-
 function App() {
   const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
   const [tracks, setTracks] = useState([]);
