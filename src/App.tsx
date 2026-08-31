@@ -72,11 +72,17 @@ function App() {
             </li>
           ))}
         </ul>
-        <h3 onClick={() => {}}>Details</h3>
-        {selectedTrack === null ? 'Track is not selected' : 
-        selectedTrack.attributes.title 
-        // selectedTrackattributes.lyrics
-        }
+        <div>
+          <h2>Details</h2>
+          {selectedTrackId === null ? 'Track is not selected' :
+            selectedTrack === null ? 'Loading track details' :
+            <div>
+              <h3>{selectedTrack.attributes.title}</h3>
+              <h4>Lyrics</h4>
+              <p>{selectedTrack.attributes.lyrics ?? 'no lyrics'}</p>
+            </div>
+          }
+        </div>
       </div>
     </>
   );
