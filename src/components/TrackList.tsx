@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import  { API_KEY } from '../../api-key.js';
+import { TrackItem } from "../components/TrackItem.js";
 
-function TrackList() {
+export function TrackList({onTrackSelect, selectedTrackId}) {
     const [tracks, setTracks] = useState([]);
-    const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
 
       useEffect(
     () => {
@@ -32,25 +32,33 @@ function TrackList() {
     );
   }
 
+  const handleResetClick = () => {
+    onTrackSelect(null);
+  };
+
+  const handleClick = trackId => {
+    onTrackSelect(trackId);
+  }
+
   return (
-    <ul>
-        {tracks.map((track) => (
-        <li
-            key={track.id}
-            style={{
-            border: selectedTrackId === track.id ? "2px solid blue" : "none",
-            }}
-        >
-            <h3 onClick={() => {
-            setSelectedTrackId(track.id)
-            }}>{track.attributes.title}</h3>
-            <audio controls>
-            <source src={track.attributes.attachments[0].url} type="audio/mpeg" />
-            </audio>
-        </li>
-        ))}
+    <>
+      <button
+        style={{ width: "300px", margin: "0 auto" }} onClick={handleResetClick}> reset selection </button>
+      <br/>
+      <ul>
+        {tracks.map((track) => {
+          return (
+            <TrackItem 
+              key={track.id} 
+              track={track} 
+              isSelected={selectedTrackId === track.id ? true : false}
+              onSelect={handleClick}/>
+          )
+      })}
     </ul>
+    </>
   )
 }
 
-export default TrackList;
+
+

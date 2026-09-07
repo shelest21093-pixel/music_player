@@ -1,27 +1,22 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import  { API_KEY } from '../api-key.js';
-import TrackList from "./components/TrackList.js";
+import { TrackList } from "./components/TrackList.js";
 import TrackDetail from "./components/TrackDetail.js";
 import { PageTitle } from "./components/PageTitle.js";
 
 function App() {
-  const [selectedTrackId, setSelectedTrackId] = useState<number | null>(null);
+  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
+
+  const handleTrackSelect = id => {
+    setSelectedTrackId(id);
+  }; 
 
   return (
     <>
       <PageTitle/>
-      <button
-        style={{ width: "300px", margin: "0 auto" }}
-        onClick={() => {
-            setSelectedTrackId(null)
-            // setSelectedTrack(null)
-        }}>
-            reset selection
-      </button>
       <div style={{display: 'flex'}}>
-        <TrackList/>
-        <TrackDetail/>
+        <TrackList onTrackSelect={handleTrackSelect} selectedTrackId={selectedTrackId}/>
+        <TrackDetail selectedTrackId={selectedTrackId}/>
       </div>
     </>
   );
