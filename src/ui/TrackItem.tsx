@@ -1,16 +1,4 @@
-type AttachmentDto = {
-  url: string;
-};
-
-type TrackListitemOutputAttributes = {
-  title: string;
-  attachments: Array<AttachmentDto>;
-};
-
-export type TrackListItemOutput = {
-  id: string;
-  attributes: TrackListitemOutputAttributes;
-};
+import { type TrackListItemOutput } from "../dal/api.ts";
 
 type Props = {
   track: TrackListItemOutput;
