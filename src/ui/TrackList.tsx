@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { API_KEY } from "../../api-key.ts";
-import {
-  TrackItem,
-  type TrackListItemOutput,
-} from "../components/TrackItem.js";
+import { TrackItem, type TrackListItemOutput } from "./TrackItem.js";
 
 type Props = {
   onTrackSelect: (id: string | null) => void;

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import { TrackList } from "./components/TrackList.js";
-import TrackDetail from "./components/TrackDetail.js";
-import { PageTitle } from "./components/PageTitle.js";
+import { TrackList } from "./ui/TrackList.js";
+import TrackDetail from "./ui/TrackDetail.js";
+import { PageTitle } from "./ui/PageTitle.js";
 
 function App() {
   const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
