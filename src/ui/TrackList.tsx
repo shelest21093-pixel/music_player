@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import { TrackItem } from "./TrackItem.js";
-import { getTracks } from "../dal/api.ts";
-import { type TrackListItemOutput } from "../dal/api.ts";
+import { useTracks } from "../bll/useTracks.tsx";
 
 type Props = {
   onTrackSelect: (id: string | null) => void;
@@ -9,11 +7,7 @@ type Props = {
 };
 
 export function TrackList({ onTrackSelect, selectedTrackId }: Props) {
-  const [tracks, setTracks] = useState<Array<TrackListItemOutput> | null>(null);
-
-  useEffect(() => {
-    getTracks().then((json) => setTracks(json.data));
-  }, []);
+  const { tracks, refresh } = useTracks();
 
   if (tracks === null) {
     return (
@@ -39,8 +33,18 @@ export function TrackList({ onTrackSelect, selectedTrackId }: Props) {
     onTrackSelect(trackId);
   };
 
+  const handleRefreshClick = () => {
+    refresh();
+  };
+
   return (
     <>
+      <button
+        style={{ width: "300px", margin: "0 auto" }}
+        onClick={handleRefreshClick}
+      >
+        refresh
+      </button>
       <button
         style={{ width: "300px", margin: "0 auto" }}
         onClick={handleResetClick}

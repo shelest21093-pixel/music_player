@@ -1,27 +1,16 @@
-import { useState, useEffect } from "react";
-import { getTrack, type GetTrackDetailOutputData } from "../dal/api.ts";
+import { useTrackDetail } from "../bll/useTrackDetail.tsx";
 
 type Props = {
   selectedTrackId: string | null;
 };
 
 function TrackDetail({ selectedTrackId }: Props) {
-  const [selectedTrack, setSelectedTrack] =
-    useState<GetTrackDetailOutputData | null>(null);
-  const trackId = selectedTrackId;
-
-  useEffect(() => {
-    if (!trackId) {
-      return;
-    }
-
-    getTrack(trackId).then((json) => setSelectedTrack(json.data));
-  }, [trackId]);
+  const { selectedTrack } = useTrackDetail(selectedTrackId);
 
   return (
     <>
       <h2>Details</h2>
-      {trackId === null ? (
+      {selectedTrackId === null ? (
         "Track is not selected"
       ) : selectedTrack === null ? (
         "Loading track details"

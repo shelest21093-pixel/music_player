@@ -1,15 +1,11 @@
-import { useState } from "react";
 import "./App.css";
 import { TrackList } from "./ui/TrackList.js";
 import TrackDetail from "./ui/TrackDetail.js";
 import { PageTitle } from "./ui/PageTitle.js";
+import { useTrackSelection } from "./bll/useTrackSelection.tsx";
 
 function App() {
-  const [selectedTrackId, setSelectedTrackId] = useState<string | null>(null);
-
-  const handleTrackSelect = (id: string | null): void => {
-    setSelectedTrackId(id);
-  };
+  const { selectedTrackId, handleTrackSelect } = useTrackSelection();
 
   return (
     <>
