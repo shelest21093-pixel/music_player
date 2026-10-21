@@ -1,0 +1,11 @@
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid blue;
+}
